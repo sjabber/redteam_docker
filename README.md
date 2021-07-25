@@ -13,7 +13,7 @@ docker build -f redteam_front.Dockerfile -t sjabber/redteam .
 # Login for Private Docker Repository
 docker login
 docker run -d -p 5000:5000 --name redteam sjabber/redteam
-docker run -d -p 8080:80 --name redteam_fron sjabber/redteam_front
+docker run -d -p 8080:80 --name redteam_front sjabber/redteam_front
 ...
 </pre>
 
