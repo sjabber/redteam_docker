@@ -1,18 +1,20 @@
 # redteam - 악성메일 대응 솔루션 (핵심 코드 제외됨)
-### Installation
+### Build docker images
 <pre>
-cd /home
-mkdir redteam
-cd redteam
+mkdir /home/redteam
+cd /home/redteam
 git clone https://github.com/sjabber/redteam_server
-cd ..
+docker build -f redteam.Dockerfile -t sjabber/redteam .
+docker build -f redteam_front.Dockerfile -t sjabber/redteam .
+...
 </pre>
 ### Run
 <pre>
 # Login for Private Docker Repository
 docker login
-docker pull sjabber/redteam
-docker run -p 5000:5000 redteam
+docker run -d -p 5000:5000 --name redteam sjabber/redteam
+docker run -d -p 8080:80 --name redteam_fron sjabber/redteam_front
+...
 </pre>
 
 ## 프로젝트 개요
