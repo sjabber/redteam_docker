@@ -156,7 +156,7 @@
 <script type="text/javascript">
     function GetUserSetting() {
         const r = new XMLHttpRequest();
-        r.open('GET', 'http://mert.koreacentral.cloudapp.azure.com:5001/setting/userSetting', true);
+        r.open('GET', 'http://localhost:5001/setting/userSetting', true);
         r.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         r.withCredentials = true;
         r.onreadystatechange = function () {
@@ -170,8 +170,12 @@
                     $('#email').val(responseObj.user_info.email);
                     $('#name').val(responseObj.user_info.name);
                 } else if (r.status === 403) {
-                    Refresh();
-                    GetUserSetting();
+                    if(Refresh()) {
+                        GetUserSetting();
+                    } else {
+                        alert("세션이 만료되었습니다. 로그아웃 됩니다.");
+                        document.location.href = "/";
+                    }
                 } else {
                     document.location.href = '/';
                 }
@@ -195,7 +199,7 @@
         };
 
         const r = new XMLHttpRequest();
-        r.open('POST', 'http://mert.koreacentral.cloudapp.azure.com:5001/setting/userSetting', true);
+        r.open('POST', 'http://localhost:5001/setting/userSetting', true);
         r.setRequestHeader("Content-Type", "application/json");
         r.withCredentials = true;
         r.onreadystatechange = function () {
@@ -209,8 +213,12 @@
                 } else if (r.status === 400) {
                     alert("계정 정보를 확인해주세요.");
                 } else if (r.status === 403) {
-                    Refresh();
-                    SetUserSetting();
+                    if(Refresh()) {
+                        SetUserSetting();
+                    } else {
+                        alert("세션이 만료되었습니다. 로그아웃 됩니다.");
+                        document.location.href = "/";
+                    }
                 }  else if (r.status === 409) {
                     alert("비밀번호를 확인해주세요.");
                 }
@@ -226,7 +234,7 @@
         }
 
         const r = new XMLHttpRequest();
-        r.open('POST', 'http://mert.koreacentral.cloudapp.azure.com:5000/setting/delUser', true);
+        r.open('POST', 'http://localhost:5001/setting/delUser', true);
         r.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         r.withCredentials = true;
         r.onreadystatechange = function () {
@@ -235,8 +243,12 @@
                     alert("정상적으로 계정이 삭제되었습니다.");
                     Logout();
                 } else if (r.status === 403) {
-                    Refresh();
-                    deleteAccount();
+                    if(Refresh()) {
+                        deleteAccount();
+                    } else {
+                        alert("세션이 만료되었습니다. 로그아웃 됩니다.");
+                        document.location.href = "/";
+                    }
                 } else {
                     alert("계정 삭제 실패했습니다.")
                 }
