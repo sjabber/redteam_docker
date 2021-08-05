@@ -10,3 +10,4 @@ COPY ./html .
 RUN npm install
 
 CMD ["node", "server.js"]
+

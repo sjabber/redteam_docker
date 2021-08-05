@@ -21,6 +21,4 @@ WORKDIR /api
 
 COPY ./main .
 
-EXPOSE 5000
-
 ENTRYPOINT ["./main"]

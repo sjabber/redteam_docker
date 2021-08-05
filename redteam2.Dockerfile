@@ -1,6 +1,7 @@
 FROM openjdk:8-jdk
 MAINTAINER Tae ho Kim <sjabber91@gmail.com>
 
+ENV DEBIAN_FRONTEND=nointeractive
 ENV TOKEN_REFRESH=awdawdawdawd
 ENV TOKEN_SECRET=qlwkndlqiwndlian
 ENV DB_HOST=20.194.16.227
@@ -15,10 +16,10 @@ ENV KAFKA_PORT=9092
 ENV KAFKA_HOSTNAME=localhost
 ENV BOOT_SERVER_PORT=5001
 
+RUN mkdir -p /api
+
 WORKDIR /api
 
 COPY ./mer-0.0.1-SNAPSHOT.jar .
 
-EXPOSE 5001
-
-ENTRYPOINT ["java -jar mer-0.0.1-SNAPSHOT.jar"] 
+ENTRYPOINT ["java","-jar","mer-0.0.1-SNAPSHOT.jar"] 
