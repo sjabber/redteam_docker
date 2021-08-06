@@ -21,9 +21,7 @@ pipeline {
             steps {
                 echo 'Clonning Repository'
 
-                git url: 'https://github.com/sjabber/redteam_server.git',
-                    branch: 'master',
-                    credentialsId: 'github'
+                git 'https://github.com/sjabber/redteam_server.git'
             }
 
             post {
