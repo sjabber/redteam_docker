@@ -1,19 +1,22 @@
 # redteam - 악성메일 대응 솔루션 for Docker
 ### Build docker images
+##### Frankly, this process is not necessary. The image already exists in Docker Hub.
 <pre>
 mkdir /home/redteam
 cd /home/redteam
 git clone https://github.com/sjabber/redteam_server
 docker build -f redteam.Dockerfile -t sjabber/redteam .
 docker build -f redteam_front.Dockerfile -t sjabber/redteam .
+docker build -f redteam2.Dockerfile -t sjabber/redteam_java .
 ...
 </pre>
 ### Run
 <pre>
 # Login for Private Docker Repository
 docker login
-docker run -d -p 5000:5000 --name redteam sjabber/redteam
-docker run -d -p 8080:80 --name redteam_front sjabber/redteam_front
+docker build -d -p 5000:5000 --name redteam sjabber/redteam
+docker build -d -p 5001:5001 --name redteam_java sjabber/redteam_java
+docker build -d -p 80:80 --name redteam_front sjabber/redteam_front
 ...
 </pre>
 
