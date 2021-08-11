@@ -19,6 +19,7 @@ pipeline {
         echo 'build front'
         dir('./redteam') {
           sh(script: '''
+            pwd
             docker build -f redteam_front.Dockerfile -t sjabber/redteam_front .
             '''
           )
