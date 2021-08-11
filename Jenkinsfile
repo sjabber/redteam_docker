@@ -7,6 +7,10 @@ node {
     stage('Pull') {
         git credentialsId: 'sjabber', url: 'https://github.com/sjabber/redteam_server'
     }
+     stage('Initialize'){
+        def dockerHome = tool 'myDocker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+    }
     stage('Unit Test') {
 
     }
