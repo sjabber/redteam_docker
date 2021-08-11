@@ -14,9 +14,9 @@ docker build -f redteam2.Dockerfile -t sjabber/redteam_java .
 <pre>
 # Login for Private Docker Repository
 docker login
-docker build -d -p 5000:5000 --name redteam sjabber/redteam
-docker build -d -p 5001:5001 --name redteam_java sjabber/redteam_java
-docker build -d -p 80:80 --name redteam_front sjabber/redteam_front
+docker run -d -p 5000:5000 --name redteam sjabber/redteam
+docker run -d -p 5001:5001 --name redteam_java sjabber/redteam_java
+docker run -d -p 80:80 --name redteam_front sjabber/redteam_front
 ...
 </pre>
 
