@@ -5,7 +5,7 @@ RUN mkdir -p html
 
 WORKDIR ./html
 
-COPY ../html .
+COPY ./html .
 
 RUN npm install
 
