@@ -28,6 +28,7 @@ node {
     }
     stage('Deploy') {
       try{
+        echo "redteam deploy start"
         sh(script: 'docker stop redteam')
         sh(script: 'docker rm redteam')
       } catch(e) {
