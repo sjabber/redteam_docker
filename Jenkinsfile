@@ -1,9 +1,9 @@
 pipeline {
     agent any
 
-    triggers {
-        pollSCM('*/1 * * * *') // cron syntax, 1분 주기로 파이프라인 구동하는 트리거
-    }
+    // triggers {
+    //     pollSCM('*/1 * * * *') // cron syntax, 1분 주기로 파이프라인 구동하는 트리거
+    // }
 
     environment {
       DOCKER_USER_ID = 'sjabber'
