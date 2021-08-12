@@ -78,7 +78,9 @@ pipeline {
         steps {
           echo "redteam deploy start"
           sshagent(['ec2-server']) {
-            sh "ssh -o StrictHostKeyChecking=no ubuntu@15.165.17.133 sudo docker rm -f `docker ps -q -a`"
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@15.165.17.133 sudo docker rm -f redteam_front"
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@15.165.17.133 sudo docker rm -f redteam_java"
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@15.165.17.133 sudo docker rm -f redteam"
           }
 
 
