@@ -84,7 +84,6 @@ pipeline {
               sh "ssh -o StrictHostKeyChecking=no ubuntu@15.165.17.133 sudo docker run -d -p 5000:5000 --name redteam \
             ${DOCKER_USER_ID}/redteam:${BUILD_NUMBER}"
             }
-
           }
         }
       }
