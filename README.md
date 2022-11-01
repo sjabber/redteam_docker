@@ -5,6 +5,8 @@
 mkdir /home/redteam
 cd /home/redteam
 git clone https://github.com/sjabber/redteam_server
+cd /home/redteam/redteam_server/redteam
+
 docker build -f redteam.Dockerfile -t sjabber/redteam .
 docker build -f redteam_front.Dockerfile -t sjabber/redteam_front .
 docker build -f redteam2.Dockerfile -t sjabber/redteam_java .
